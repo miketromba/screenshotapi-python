@@ -1,0 +1,97 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "screenshotapi-to"
+version = "1.0.0"
+description = "Official Python SDK for ScreenshotAPI."
+readme = { file = "README.md", content-type = "text/markdown" }
+license = { file = "LICENSE" }
+requires-python = ">=3.8"
+authors = [{ name = "ScreenshotAPI", email = "support@screenshotapi.to" }]
+maintainers = [{ name = "ScreenshotAPI", email = "support@screenshotapi.to" }]
+keywords = [
+    "screenshot",
+    "api",
+    "screenshotapi",
+    "webpage",
+    "capture",
+    "html-to-image",
+    "website-thumbnail",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Multimedia :: Graphics :: Capture :: Screen Capture",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Typing :: Typed",
+]
+dependencies = ["httpx>=0.24.0,<1.0"]
+
+[project.optional-dependencies]
+dev = [
+    "build>=1.2",
+    "mypy>=1.8,<1.15",
+    "ruff>=0.8",
+    "twine>=5.0",
+]
+test = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.urls]
+Homepage = "https://screenshotapi.to"
+Documentation = "https://screenshotapi.to/docs"
+Pricing = "https://screenshotapi.to/pricing"
+Repository = "https://github.com/miketromba/screenshotapi-python"
+Issues = "https://github.com/miketromba/screenshotapi-python/issues"
+Support = "mailto:support@screenshotapi.to"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/screenshotapi"]
+
+[tool.hatch.build.targets.sdist]
+only-include = [
+    "examples",
+    "src",
+    "tests",
+    "LICENSE",
+    "README.md",
+    "pyproject.toml",
+]
+exclude = [".gitignore"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+asyncio_mode = "auto"
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]
+
+[tool.mypy]
+python_version = "3.8"
+strict = true
+files = ["src/screenshotapi"]
+
+[[tool.mypy.overrides]]
+module = ["anyio.*"]
+follow_imports = "skip"
