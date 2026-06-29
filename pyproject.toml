@@ -59,7 +59,7 @@ Documentation = "https://screenshotapi.to/docs"
 Pricing = "https://screenshotapi.to/pricing"
 Repository = "https://github.com/miketromba/screenshotapi-python"
 Issues = "https://github.com/miketromba/screenshotapi-python/issues"
-Support = "mailto:support@screenshotapi.to"
+Support = "https://screenshotapi.to"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/screenshotapi"]
